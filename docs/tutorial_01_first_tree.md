@@ -107,7 +107,7 @@ Let's consider the following XML file named __my_tree.xml__:
  <root main_tree_to_execute = "MainTree" >
      <BehaviorTree ID="MainTree">
         <Sequence name="root_sequence">
-            <SayHello       name="action_hello"/>
+            <CheckBattery   name="check_battery"/>
             <OpenGripper    name="open_gripper"/>
             <ApproachObject name="approach_object"/>
             <CloseGripper   name="close_gripper"/>
@@ -168,7 +168,7 @@ int main()
     // The tick is propagated to the children based on the logic of the tree.
     // In this case, the entire sequence is executed, because all the children
     // of the Sequence return SUCCESS.
-    tree.root_node->executeTick();
+    tree.tickRoot();
 
     return 0;
 }
