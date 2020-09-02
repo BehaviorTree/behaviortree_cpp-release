@@ -17,11 +17,12 @@ endif()
 find_package(Boost COMPONENTS coroutine QUIET)
 if(Boost_FOUND)
     include_directories(${Boost_INCLUDE_DIRS})
-    if(NOT Boost_VERSION VERSION_LESS 105900)
+    string(REPLACE "." "0" Boost_VERSION_NODOT ${Boost_VERSION})
+    if(NOT Boost_VERSION_NODOT VERSION_LESS 105900)
         message(STATUS "Found boost::coroutine2.")
         add_definitions(-DBT_BOOST_COROUTINE2)
         set(BT_COROUTINES true)
-    elseif(NOT Boost_VERSION VERSION_LESS 105300)
+    elseif(NOT Boost_VERSION_NODOT VERSION_LESS 105300)
         message(STATUS "Found boost::coroutine.")
         include_directories(${Boost_INCLUDE_DIRS})
         add_definitions(-DBT_BOOST_COROUTINE)
@@ -71,7 +72,6 @@ endif()
 find_package(ament_cmake QUIET)
 
 if ( ament_cmake_FOUND )
-    find_package(ament_cmake_gtest REQUIRED)
 
     # Not adding -DUSING_ROS since xml_parsing.cpp hasn't been ported to ROS2
 
@@ -161,7 +161,7 @@ list(APPEND BT_SOURCE
     src/decorators/repeat_node.cpp
     src/decorators/retry_node.cpp
     src/decorators/subtree_node.cpp
-    src/decorators/timeout_node.cpp
+    src/decorators/delay_node.cpp
 
     src/controls/if_then_else_node.cpp
     src/controls/fallback_node.cpp
@@ -229,7 +229,7 @@ if( ZMQ_FOUND )
 endif()
 
 if(MSVC)
-    target_compile_options(${BEHAVIOR_TREE_LIBRARY} PRIVATE /W4 /WX)
+    target_compile_options(${BEHAVIOR_TREE_LIBRARY} PRIVATE /W3 /WX)
 else()
     target_compile_options(${BEHAVIOR_TREE_LIBRARY} PRIVATE
         -Wall -Wextra -Werror=return-type)
