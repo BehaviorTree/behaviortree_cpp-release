@@ -1,7 +1,7 @@
+#include <future>
 #include "behaviortree_cpp_v3/loggers/bt_zmq_publisher.h"
 #include "behaviortree_cpp_v3/flatbuffers/bt_flatbuffer_helper.h"
-#include <future>
-#include "zmq.hpp"
+#include "cppzmq/zmq.hpp"
 
 namespace BT
 {
@@ -79,7 +79,7 @@ PublisherZMQ::PublisherZMQ(const BT::Tree& tree,
                 {
                     std::cout << "[PublisherZMQ] Server quitting." << std::endl;
                 }
-                std::cout << "[PublisherZMQ] just died. Exeption " << err.what() << std::endl;
+                std::cout << "[PublisherZMQ] just died. Exception " << err.what() << std::endl;
                 active_server_ = false;
             }
         }
@@ -176,7 +176,7 @@ void PublisherZMQ::flush()
         {
             std::cout << "[PublisherZMQ] Publisher quitting." << std::endl;
         }
-        std::cout << "[PublisherZMQ] just died. Exeption " << err.what() << std::endl;
+        std::cout << "[PublisherZMQ] just died. Exception " << err.what() << std::endl;
     }
     
     send_pending_ = false;
