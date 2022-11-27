@@ -1,3 +1,26 @@
+## behaviortree_cpp (noetic) - 3.8.1-1
+
+The packages in the `behaviortree_cpp` repository were released into the `noetic` distro by running `/usr/bin/bloom-release behaviortree_cpp --rosdistro noetic --edit-track` on `Sun, 27 Nov 2022 19:19:30 -0000`
+
+The `behaviortree_cpp_v3` package was released.
+
+Version of package(s) in repository `behaviortree_cpp`:
+
+- upstream repository: https://github.com/BehaviorTree/BehaviorTree.CPP.git
+- release repository: https://github.com/BehaviorTree/behaviortree_cpp-release.git
+- rosdistro version: `3.8.0-1`
+- old version: `3.8.0-1`
+- new version: `3.8.1-1`
+
+Versions of tools used:
+
+- bloom version: `0.11.2`
+- catkin_pkg version: `0.5.2`
+- rosdep version: `0.22.1`
+- rosdistro version: `0.9.0`
+- vcstools version: `0.1.42`
+
+
 ## behaviortree_cpp (foxy) - 3.8.0-1
 
 The packages in the `behaviortree_cpp` repository were released into the `foxy` distro by running `/usr/bin/bloom-release behaviortree_cpp --rosdistro foxy -y` on `Tue, 11 Oct 2022 09:47:11 -0000`
